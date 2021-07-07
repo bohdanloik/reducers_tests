@@ -16,6 +16,12 @@ import { TodolistType } from "../App";
         case 'ADD-TODOLIST':
             let newTodolists = state.push({id: v1(),filter: 'all', title: action.title})
             return state;
+        case 'CHANGE-TODOLIST-TITLE':
+            let newState = state.find((i) => i.id === action.id);
+            if(newState) {
+                newState.title = action.title;
+            }
+            return state;
         default:
             throw new Error("I don't understand this type")
     }
