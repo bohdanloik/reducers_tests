@@ -22,6 +22,12 @@ import { TodolistType } from "../App";
                 newState.title = action.title;
             }
             return state;
+        case 'CHANGE-TODOLIST-FILTER':
+             let filterChange = state.find((i) => i.id === action.id);
+            if(filterChange) {
+                filterChange.filter = action.filter;
+            }
+            return state;
         default:
             throw new Error("I don't understand this type")
     }
