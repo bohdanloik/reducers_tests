@@ -50,7 +50,7 @@ import { FilterValuesType, TodolistType } from "../App";
     }
  }
 
- export const RemoveTodolistAC = (todolistId: string): RemoveTodolistActionType => {
+ export const removeTodolistAC = (todolistId: string): RemoveTodolistActionType => {
     return { type: 'REMOVE-TODOLIST', id: todolistId}
  }
  export const addTodolistAC = (todolistTitle: string): AddTodolistActionType => {
