@@ -68,6 +68,8 @@ function AppWithReducers() {
     function removeTodolist(id: string) {
         let action = removeTodolistAC(id);
         dispatchToTodolistReducer(action);
+        dispatchToTasksReducer(action);
+
     }
 
     function changeTodolistTitle(id: string, title: string) {
@@ -78,6 +80,7 @@ function AppWithReducers() {
     function addTodolist(title: string) {
         let action = addTodolistAC( title);
         dispatchToTodolistReducer(action);
+        dispatchToTasksReducer(action);
     }
 
     return (
