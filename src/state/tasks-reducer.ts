@@ -65,7 +65,7 @@ import { AddTodolistActionType } from "./todolists-reducer";
         }
         case 'ADD-TODOLIST':
             let stateCopy = {...state};
-            stateCopy[v1()] = [];
+            stateCopy[action.id] = [];
             return stateCopy;
 
         default:
@@ -85,6 +85,6 @@ import { AddTodolistActionType } from "./todolists-reducer";
  export const changeTaskTitleAC = (id: string, title: string, todolistId: string, ): ChangeTaskTitleActionType => {
     return { type: 'CHANGE-TASK-TITLE', title: title, todolistId: todolistId, id: id}
  }
- export const addTodolistAC = (todolistTitle: string ): AddTodolistActionType => {
-    return { type: 'ADD-TODOLIST', title: todolistTitle}
- }
+//  export const addTodolistAC = (todolistTitle: string ): AddTodolistActionType => {
+//     return { type: 'ADD-TODOLIST', title: todolistTitle}
+//  }

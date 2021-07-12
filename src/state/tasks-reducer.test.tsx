@@ -1,5 +1,6 @@
-import {addTaskAC, addTodolistAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC, tasksReducer} from './tasks-reducer';
+import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC, tasksReducer} from './tasks-reducer';
 import {TasksStateType} from '../App';
+import { addTodolistAC } from './todolists-reducer';
 
 test('correct task should be deleted from correct array', () => {
    const startState: TasksStateType = {
@@ -101,7 +102,7 @@ test('correct task should be added to correct array', () => {
     expect(endState["todolistId2"].length).toBe(3);
   });
  
-  test('new array should be added when new todolist is added', () => {
+test('new array should be added when new todolist is added', () => {
     const startState: TasksStateType = {
         "todolistId1": [
             { id: "1", title: "CSS", isDone: false },

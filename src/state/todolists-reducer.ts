@@ -11,6 +11,7 @@ import { FilterValuesType, TodolistType } from "../App";
  export type AddTodolistActionType = {
     type: 'ADD-TODOLIST'
     title: string
+    id: string
  }
  export type ChangeTodolistTitleActionType = {
     type: 'CHANGE-TODOLIST-TITLE'
@@ -30,7 +31,7 @@ import { FilterValuesType, TodolistType } from "../App";
             let newtodolists = state.filter((i) => i.id !== action.id);
             return newtodolists;
         case 'ADD-TODOLIST':
-            let newTodolists = state.push({id: v1(),filter: 'all', title: action.title})
+            let newTodolists = state.push({id: action.id,filter: 'all', title: action.title})
             return [...state];
         case 'CHANGE-TODOLIST-TITLE':
             let newState = state.find((i) => i.id === action.id);
@@ -52,8 +53,8 @@ import { FilterValuesType, TodolistType } from "../App";
  export const RemoveTodolistAC = (todolistId: string): RemoveTodolistActionType => {
     return { type: 'REMOVE-TODOLIST', id: todolistId}
  }
- export const AddTodolistAC = (todolistTitle: string): AddTodolistActionType => {
-    return { type: 'ADD-TODOLIST', title: todolistTitle}
+ export const addTodolistAC = (todolistTitle: string): AddTodolistActionType => {
+    return { type: 'ADD-TODOLIST', title: todolistTitle, id: v1()}
  }
  export const ChangeTodolistTitleAC = (todolistTitle: string, todolistId: string): ChangeTodolistTitleActionType => {
     return { type: 'CHANGE-TODOLIST-TITLE', title: todolistTitle, id: todolistId}
