@@ -24,7 +24,15 @@ import { FilterValuesType, TodolistType } from "../App";
     filter: FilterValuesType
  }
 
- export const todolistsReducer = (state: Array<TodolistType>, action: ActionType) => {
+ export let todolistId1 = v1();
+ export let todolistId2 = v1();
+ export const initialState: Array<TodolistType>  = [
+   {id: todolistId1, title: "What to learn", filter: "all"},
+   {id: todolistId2, title: "What to buy", filter: "all"}
+ ]
+
+
+ export const todolistsReducer = (state: Array<TodolistType> = initialState, action: ActionType) => {
     switch (action.type) {
         case 'REMOVE-TODOLIST':
             
@@ -46,7 +54,7 @@ import { FilterValuesType, TodolistType } from "../App";
             }
             return [...state];
         default:
-            throw new Error("I don't understand this type")
+            return state;
     }
  }
 
