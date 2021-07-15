@@ -26,6 +26,8 @@ type PropsType = {
 }
 
 export function Todolist(props: PropsType) {
+    console.log('Todolist is called');
+    
     const addTask = (title: string) => {
         props.addTask(title, props.id);
     }
