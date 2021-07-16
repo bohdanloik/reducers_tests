@@ -62,15 +62,17 @@ import { AddTodolistActionType, RemoveTodolistActionType, todolistId1, todolistI
             if(updatedTask) {
                 updatedTask.isDone = action.isDone;
             }
+            stateCopy[action.todolistId] = [...updatedTodolistsTasks];
             return stateCopy;
         }
         case 'CHANGE-TASK-TITLE': {
             let stateCopy = {...state};
-            let updatedTodolistsTasks = state[action.todolistId];
+            let updatedTodolistsTasks = stateCopy[action.todolistId];
             let updatedTask = updatedTodolistsTasks.find((t) => t.id === action.id);
             if(updatedTask) {
                 updatedTask.title = action.title;
             }
+            stateCopy[action.todolistId] = [...updatedTodolistsTasks];
             return stateCopy;
         }
         case 'ADD-TODOLIST': {
