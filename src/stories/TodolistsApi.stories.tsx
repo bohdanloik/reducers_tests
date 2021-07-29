@@ -47,7 +47,6 @@ export const DeleteTodolist = () => {
                 }
             });
     }, [])
-
     return <div> {JSON.stringify(state)}</div>
 }
 
