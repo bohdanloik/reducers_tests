@@ -13,7 +13,6 @@ export default {
   decorators: [ReduxStoreProviderDecorator]
 }
 
-
 export const AppWithReduxExmple = (props: any) => {
     return <AppWithRedux /> 
 }

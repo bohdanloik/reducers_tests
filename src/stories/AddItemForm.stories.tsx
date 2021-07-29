@@ -7,8 +7,6 @@ export default {
   title: 'Example/AddItemForm',
   component: AddItemForm,
 }
-
-
 export const ExmpleAddItemForm = (props: any) => {
     return(<AddItemForm addItem={action('Button inside form clicked')} />
     )

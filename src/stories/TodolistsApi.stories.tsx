@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
+import { todolistsAPI } from '../api/todolists-api'
 
 export default {
    title: 'API'
@@ -12,19 +13,19 @@ const settings = {
 export const GetTodolists = () => {
     const [state, setState] = useState<any>(null)
     useEffect(() => {
-        axios.get('http://localhost:8080/api/todolists', settings)
-            .then((res) => {
+        todolistsAPI.getTodolist()
+        .then ((res) => {
                 setState(res.data);
-            });
+            })
     }, [])
-
-    return <div> {JSON.stringify(state)}</div>
-}
  
-export const CreateTodolist = () => {
+    return <div> {JSON.stringify(state)}</div>
+ }
+ 
+ export const CreateTodolist = () => {
     const [state, setState] = useState<any>(null)
     useEffect(() => {
-        axios.post('http://localhost:8080/api/todolists', { title: "Todolist" }, settings)
+        todolistsAPI.createTodolist('New-New Todolist')
             .then((res) => {
                 setState(res.data);
             });
@@ -36,11 +37,11 @@ export const CreateTodolist = () => {
 export const DeleteTodolist = () => {
     const [state, setState] = useState<any>(null)
     useEffect(() => {
-        axios.get('http://localhost:8080/api/todolists', settings)
+        todolistsAPI.getTodolist()
             .then((res) => {
                 if (res.data && res.data.length) {
                     const todolistId = res.data[res.data.length - 1].id;
-                    axios.delete(`http://localhost:8080/api/todolists/${todolistId}`, settings)
+                    todolistsAPI.deleteTodolist(todolistId)
                         .then((res) => {
                             setState(res.data);
                         });
@@ -53,11 +54,11 @@ export const DeleteTodolist = () => {
 export const UpdateTodolistTitle = () => {
     const [state, setState] = useState<any>(null)
     useEffect(() => {
-        axios.get('http://localhost:8080/api/todolists', settings)
+        todolistsAPI.getTodolist()
             .then((res) => {
                 if (res.data && res.data.length) {
                     const todolistId = res.data[res.data.length - 1].id;
-                    axios.put(`http://localhost:8080/api/todolists/${todolistId}`, { title: 'New Updated Tite' }, settings)
+                    todolistsAPI.updateTodolist(todolistId, 'Updated Todolist')
                         .then((res) => {
                             setState(res.data)
                         })
@@ -67,6 +68,8 @@ export const UpdateTodolistTitle = () => {
 
     return <div> {JSON.stringify(state)}</div>
 }
+ 
+
 
 export const GetTodolistsTasks = () => {
     const [state, setState] = useState<any>(null)
