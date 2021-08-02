@@ -11,14 +11,21 @@ export type TodolistType = {
     id: string
     tasks: Array<any>
 }
+type CreateTodolistResponsType = {
+    resultCode: number
+    messages: string[]
+    data: {
+        item: TodolistType
+    }
+}
 
 export const todolistsAPI = {
     getTodolist() {
-        let promise = axios.get('http://localhost:8080/api/todolists', settings);
+        let promise = axios.get<Array<TodolistType>>('http://localhost:8080/api/todolists', settings);
         return promise;
     },
     createTodolist(title: string) {
-        let promise = axios.post('http://localhost:8080/api/todolists', {title}, settings);
+        let promise = axios.post<CreateTodolistResponsType>('http://localhost:8080/api/todolists', {title}, settings);
         return promise;
     },
     deleteTodolist(todolistId: string) {
